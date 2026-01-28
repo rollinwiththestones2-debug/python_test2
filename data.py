@@ -1,11 +1,11 @@
 URBAN_ROUTES_URL = "https://cnt-b6a6c93c-7b1f-4b58-bf63-fd682d74eebf.containerhub.tripleten-services.com"
 
-ADDRESS_FROM = "East 2nd Street, New York"
-ADDRESS_TO = "Wall Street, New York"
+ADDRESS_FROM = "East 2nd Street, 601"
+ADDRESS_TO = "1300 1st St"
 
-PHONE_NUMBER = "+1234567890"
+PHONE_NUMBER = "+1 123 123 12 12"
 
-CARD_NUMBER = "1234 5678 9100"   # 12 digits
+CARD_NUMBER = "1234 5678 9100"
 CARD_CODE = "1111"
 
-MESSAGE_FOR_DRIVER = "Please hurry"
+MESSAGE_FOR_DRIVER = "Stop at the juice bar, please"
