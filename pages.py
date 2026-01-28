@@ -19,8 +19,6 @@ class UrbanRoutesPage:
         "//div[contains(@class,'tcard') and .//div[text()='Supportive']]"
     )
 
-    ACTIVE_TARIFF = (By.XPATH, "//div[contains(@class,'tcard active')]")
-
     PHONE_BUTTON = (By.CLASS_NAME, "np-text")
     PHONE_INPUT = (By.ID, "phone")
     NEXT_BUTTON = (By.XPATH, "//button[contains(text(),'Next')]")
@@ -59,11 +57,11 @@ class UrbanRoutesPage:
         self.wait.until(EC.element_to_be_clickable(self.CALL_TAXI_BUTTON)).click()
 
     def select_supportive_tariff(self):
-        if not self.driver.find_elements(*self.ACTIVE_TARIFF):
-            self.wait.until(EC.element_to_be_clickable(self.SUPPORTIVE_TARIFF)).click()
+        self.wait.until(EC.element_to_be_clickable(self.SUPPORTIVE_TARIFF)).click()
 
     def is_supportive_selected(self):
-        return len(self.driver.find_elements(*self.ACTIVE_TARIFF)) > 0
+        supportive_card = self.driver.find_element(*self.SUPPORTIVE_TARIFF)
+        return "active" in supportive_card.get_attribute("class")
 
     def enter_phone_number(self, phone_number):
         self.wait.until(EC.element_to_be_clickable(self.PHONE_BUTTON)).click()
@@ -110,4 +108,6 @@ class UrbanRoutesPage:
         self.wait.until(EC.element_to_be_clickable(self.ORDER_BUTTON)).click()
 
     def car_search_modal_is_visible(self):
-        return self.wait.until(EC.visibility_of_element_located(self.CAR_SEARCH_MODAL)).is_displayed()
+        return self.wait.until(
+            EC.visibility_of_element_located(self.CAR_SEARCH_MODAL)
+        ).is_displayed()
