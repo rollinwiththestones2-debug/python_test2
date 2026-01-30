@@ -67,6 +67,10 @@ class UrbanRoutesPage:
         self.wait.until(EC.element_to_be_clickable(self.PHONE_BUTTON)).click()
         phone_input = self.wait.until(EC.visibility_of_element_located(self.PHONE_INPUT))
         phone_input.send_keys(phone_number)
+        self.wait.until(EC.element_to_be_clickable(self.NEXT_BUTTON)).click()
+
+    def get_phone_value(self):
+        return self.driver.find_element(*self.PHONE_INPUT).get_property("value")
 
     def submit_sms_code(self, code):
         self.wait.until(EC.visibility_of_element_located(self.SMS_CODE_FIELD)).send_keys(code)
@@ -75,6 +79,7 @@ class UrbanRoutesPage:
     def add_card(self, number, code):
         self.wait.until(EC.element_to_be_clickable(self.PAYMENT_METHOD)).click()
         self.wait.until(EC.element_to_be_clickable(self.ADD_CARD_BUTTON)).click()
+
         self.wait.until(EC.visibility_of_element_located(self.CARD_NUMBER_FIELD)).send_keys(number)
 
         cvv = self.wait.until(EC.visibility_of_element_located(self.CARD_CODE_FIELD))
@@ -88,8 +93,11 @@ class UrbanRoutesPage:
 
     def add_comment(self, message):
         field = self.wait.until(EC.element_to_be_clickable(self.COMMENT_FIELD))
+        field.clear()
         field.send_keys(message)
-        return field.get_property("value")
+
+    def get_comment_value(self):
+        return self.driver.find_element(*self.COMMENT_FIELD).get_property("value")
 
     def toggle_blanket(self):
         self.wait.until(EC.element_to_be_clickable(self.BLANKET_SWITCH)).click()
