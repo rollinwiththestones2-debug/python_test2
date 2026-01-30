@@ -29,7 +29,7 @@ class UrbanRoutesPage:
     PAYMENT_METHOD = (By.CLASS_NAME, "pp-button")
     ADD_CARD_BUTTON = (By.XPATH, "//div[contains(text(),'Add card')]")
     CARD_NUMBER_FIELD = (By.ID, "number")
-    CARD_CODE_FIELD = (By.ID, "code")
+    CARD_CODE_FIELD = (By.XPATH, '//input[@class="card-input" and @id="code"]')
     LINK_BUTTON = (By.XPATH, "//button[contains(text(),'Link')]")
 
     COMMENT_FIELD = (By.ID, "comment")
@@ -40,7 +40,7 @@ class UrbanRoutesPage:
     ICE_CREAM_PLUS = (By.CLASS_NAME, "counter-plus")
     ICE_CREAM_COUNT = (By.CLASS_NAME, "counter-value")
 
-    ORDER_BUTTON = (By.XPATH, "//button[contains(text(),'Order')]")
+    ORDER_BUTTON = (By.CLASS_NAME, 'smart-button-wrapper')
     CAR_SEARCH_MODAL = (By.CLASS_NAME, "order-body")
 
     def set_route(self, address_from, address_to):
